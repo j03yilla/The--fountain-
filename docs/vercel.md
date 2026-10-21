@@ -29,3 +29,7 @@ Configure the GitHub OAuth callback as `https://YOUR-DOMAIN/api/auth/callback/gi
 The CLI has not yet generated a verified `neon.ts` or completed `neon deploy`. Do not assume those steps succeeded. Test database connectivity, anonymous visibility, cross-contributor privacy, editor decisions and publishing against the actual Neon database before launch.
 
 Public content routes may be prerendered during the build; ensure configured Neon credentials work during builds as well as runtime. Current queries must be reviewed for caching and sitemap completeness before launch.
+
+## Platform 404 troubleshooting
+
+The repository includes vercel.json to explicitly select Next.js and its .next output. A Vercel NOT_FOUND response at the root is different from the application's designed 404. Verify the latest deployment uses the current main commit, the project's root directory is blank (repository root), and the production domain is assigned to this project. A successful GitHub deployment status alone does not confirm that a production domain serves the application.
