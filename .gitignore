@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+.vercel/
+
+# Public Wix snapshots contain transient platform tokens; retain locally only.
+migration/source/

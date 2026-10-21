@@ -1,0 +1,5 @@
+import {notFound} from 'next/navigation';
+import {requireActor} from '@/lib/auth';
+import {database} from '@/lib/db';
+export const metadata={title:'Private manuscript',robots:{index:false,follow:false}};
+export default async function Manuscript({params}:{params:Promise<{id:string}>}){const user=await requireActor();const {id}=await params;if(!/^[0-9a-f-]{36}$/.test(id))notFound();const sql=database();const result=await sql.transaction([sql`select set_config('app.actor_id',${user.id},true)`,sql`select title,content,state from works where id=${id}`,sql`select note,created_at from reviews where work_id=${id} order by created_at desc`]);const w=result[1][0];if(!w)notFound();return <main id="main" className="section page narrow"><span className="status">{w.state}</span><h1>{w.title}</h1><div className="manuscript">{w.content.split('\n').map((line:string,i:number)=><p key={i}>{line||'\u00a0'}</p>)}</div><h2>Editorial feedback</h2>{result[2].map((n,i)=><blockquote key={i}>{n.note}</blockquote>)}{!result[2].length&&<p>No feedback yet.</p>}</main>;}

@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import {configured,database} from '@/lib/db';
+export const metadata={title:'Editions & collections'};
+export default async function Editions(){const rows=configured()?await database()`select title,description,slug from editions where published=true order by title`:[];return <main id="main" className="section page"><p className="eyebrow">CURATED BY THE FOUNTAIN</p><h1>Collected currents.</h1><p className="lede">Writing and art in conversation, brought together in curated editions.</p><div className="profile-grid">{rows.map(e=><article className="archive-note" key={e.slug}><h2><Link href={`/editions/${e.slug}`}>{e.title}</Link></h2><p>{e.description}</p></article>)}</div>{!rows.length&&<p>New editions will appear here once their works have been reviewed and published.</p>}</main>;}

@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import {configured,database} from '@/lib/db';
+export const metadata={title:'Contributors'};
+export default async function Contributors(){const rows=configured()?await database()`select name,slug,bio from profiles where public=true order by name`:[];return <main id="main" className="section page"><p className="eyebrow">THE PEOPLE BEHIND THE PAGES</p><h1>Independent voices.<br/><em>A shared Fountain.</em></h1><p className="lede">Meet the writers and artists contributing to the publication.</p><div className="profile-grid">{rows.map(p=><article className="archive-note" key={p.slug}><h2><Link href={`/contributors/${p.slug}`}>{p.name}</Link></h2><p>{p.bio}</p></article>)}</div>{!rows.length&&<p>Verified contributor profiles will appear here as the collection is prepared.</p>}</main>;}

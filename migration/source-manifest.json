@@ -1,0 +1,25 @@
+{
+  "note": "Raw source snapshots retained locally, excluded from Git to omit transient Wix platform tokens. This is a capture manifest, not a reconciled content inventory.",
+  "captures": [
+    {
+      "file": "archive.html",
+      "bytes": 919412,
+      "sha256": "50725829c0e48bcd8ced2cbab55a4974d3d23fce9876af2c7598c81b5fe0a6e8"
+    },
+    {
+      "file": "home.html",
+      "bytes": 854904,
+      "sha256": "b4790111841f64b41158c812c8fc2e5aa2b9d01fe0cf108bfeaf33d6f65ff852"
+    },
+    {
+      "file": "peace-lives-here.html",
+      "bytes": 782923,
+      "sha256": "50830ad18bef2f71ecf96ceb6d6209a8927e4921e8b1c7f7fb46433755160156"
+    },
+    {
+      "file": "sitemap.xml",
+      "bytes": 526,
+      "sha256": "6110dc8fc6eb1bef068b2cceefd686be3032fd24da9d4eb7894aac7fa5a57127"
+    }
+  ]
+}
